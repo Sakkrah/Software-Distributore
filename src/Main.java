@@ -5,7 +5,7 @@ public class Main {
 
 	public static void main(String[] args) throws IOException  {
 		
-		Macchinetta macchinetta = new Macchinetta("distributore.csv");
+		Prodotti macchinetta = new Prodotti("distributore.csv");
 		LinkedList<String> listaElencoNuova = new LinkedList<String>();
 		LinkedList<Prodotti> elencoprodotti = new LinkedList<Prodotti>();		
 		
@@ -13,7 +13,7 @@ public class Main {
 		int index= 0;
 		//saldo fittizio per test (if)
 			
-		Macchinetta.creaLinkedListdiArrayDatabase(elencoprodotti);
+		Prodotti.creaLinkedListdiArrayDatabase(elencoprodotti);
 		
 		Prodotti.adminCheck(elencoprodotti, listaElencoNuova, macchinetta, saldo, index);
 		
