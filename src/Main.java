@@ -1,25 +1,27 @@
 import java.io.IOException;
-import java.util.LinkedList;
 
 public class Main {
 
+	
+	//PROGRAMMA MACCHINETTA ALIMENTARE, BENZINAIO E BANCOMAT
+	
+	//FEATURE MACCHINETTA:
+	//1) Acquisto multiplo di prodotti (gestiti da un database).
+	//2) Riconoscienza automatica della disponibilita' dei prodotti.
+	//3) Modalita' amministrativa.
+	//4) Possibilita' di cambiare la quantita' di multipli prodotti in successione.
+	//5) Possibilita' di cambiare il prezzo di multipli prodotti in successione.
+	//6) Possibilita' di aggiungere multipli prodotti in successione.
+	
+	
 	public static void main(String[] args) throws IOException  {
-		
-		Prodotti macchinetta = new Prodotti("distributore.csv");
-		LinkedList<String> listaElencoNuova = new LinkedList<String>();
-		LinkedList<Prodotti> elencoprodotti = new LinkedList<Prodotti>();		
-		
-		int saldo = 100;
-		int index= 0;
-		//saldo fittizio per test (if)
-			
-		Prodotti.creaLinkedListdiArrayDatabase(elencoprodotti);
-		
-		Prodotti.adminCheck(elencoprodotti, listaElencoNuova, macchinetta, saldo, index);
-		
-		
-	}	
+	
+	Carburanti carburanti = new Carburanti("carburanti.csv");
+	Carta bancomat = new Carta("carte.csv");
+	Prodotti macchinetta = new Prodotti("distributore.csv");
+	
+	bancomat.mostraMenuCarta(macchinetta,carburanti);
+	
+	}		
 	
 	}
-
-
