@@ -19,8 +19,9 @@ public class Main {
 	Carburanti carburanti = new Carburanti("carburanti.csv");
 	Carta bancomat = new Carta("carte.csv");
 	Prodotti macchinetta = new Prodotti("distributore.csv");
+	Distributore distributore = new Distributore();
 	
-	bancomat.mostraMenuCarta(macchinetta,carburanti);
+	bancomat.mostraMenuCarta(macchinetta,carburanti,bancomat,distributore);
 	
 	}		
 	

@@ -93,7 +93,7 @@ public class Prodotti {
 			if (i==0) {System.out.println("***************************");}
 			if (elencoprodotti.get(i).getQnt()==0) {
 				System.out.println("Non disponibile!");
-				i++;
+				
 			}
 			
 			else {
@@ -109,7 +109,7 @@ public class Prodotti {
 	}
 	
 	//metodo che accoglie l'input dell'utente e lo ridireziona all'acquisto, oppure alla modalita' admin
-	static void scegliProdotto(LinkedList<Prodotti> elencoprodotti, double saldo,LinkedList<String> listaElencoNuova, Prodotti macchinetta) throws IOException {
+	static void scegliProdotto(LinkedList<Prodotti> elencoprodotti, double saldo,LinkedList<String> listaElencoNuova, Prodotti macchinetta, Carta bancomat, int numerocartapassato, LinkedList<Carta> elencocarte, LinkedList<Carta> listaElencoNuovaCarta) throws IOException {
 		Scanner input = new Scanner(System.in);
 		int index = 0;
 		boolean interruttore = true;
@@ -122,7 +122,7 @@ public class Prodotti {
 			if (elencoprodotti.get(i).getID().equals(risposta)) {
 				interruttore=false;
 				index = i;
-				acquistoProdotto(elencoprodotti, saldo, index, listaElencoNuova, macchinetta);
+				acquistoProdotto(elencoprodotti, saldo, index, listaElencoNuova, macchinetta,bancomat,numerocartapassato, listaElencoNuovaCarta, elencocarte);
 				input.close();
 			}
 			
@@ -139,7 +139,7 @@ public class Prodotti {
 			}
 	
 	//metodo che gestisce l'acquisto e l'inventario della macchinetta
-	static void acquistoProdotto(LinkedList<Prodotti> elencoprodotti, double saldo, int index, LinkedList<String> listaElencoNuova, Prodotti macchinetta) throws IOException {
+	static void acquistoProdotto(LinkedList<Prodotti> elencoprodotti, double saldo, int index, LinkedList<String> listaElencoNuova, Prodotti macchinetta, Carta bancomat, int numerocartapassato, LinkedList listaElencoNuovaCarta, LinkedList<Carta> elencocarte) throws IOException {
 		Scanner input = new Scanner(System.in);
 		
 
@@ -159,19 +159,22 @@ public class Prodotti {
 			
 			else {
 				mostraFileProdotti(elencoprodotti);
-				scegliProdotto(elencoprodotti, saldo, listaElencoNuova, macchinetta);
+				scegliProdotto(elencoprodotti, saldo, listaElencoNuova, macchinetta,bancomat, numerocartapassato, listaElencoNuovaCarta, elencocarte);
 				 }
 			
 			}
 		else if (value>0 && saldo > elencoprodotti.get(index).getPrezzo()) {
-			System.out.println("Grazie!");
+			double prezzo= elencoprodotti.get(index).getPrezzo();
 			value = value -1;
 			Prodotti p = elencoprodotti.get(index);
 			p.setQnt(value);
 			
-			saldo = saldo - elencoprodotti.get(index).getPrezzo();
-				
+			
+			
+			//saldo = saldo - elencoprodotti.get(index).getPrezzo();
+			bancomat.faiPagamento(prezzo, numerocartapassato, elencocarte , listaElencoNuovaCarta, bancomat);
 			aggiornaDatabase(listaElencoNuova, elencoprodotti, macchinetta);
+			
 			
 			System.out.println("Vuoi acquistare qualcos'altro? (y/n)");
 			char scelta = input.next().charAt(0);
@@ -183,7 +186,7 @@ public class Prodotti {
 			
 			else {
 				mostraFileProdotti(elencoprodotti);
-				scegliProdotto(elencoprodotti, saldo, listaElencoNuova, macchinetta);
+				scegliProdotto(elencoprodotti, saldo, listaElencoNuova, macchinetta, bancomat, numerocartapassato, elencocarte,listaElencoNuovaCarta);
 				 }
 			
 		}
@@ -192,7 +195,8 @@ public class Prodotti {
 		}
 	
 	//metodo che gestisce l'accensione della macchinetta e l'eventualità di accesso con modalità amministrativa
-	static void adminCheck(LinkedList<Prodotti> elencoprodotti,LinkedList<String> listaElencoNuova, Prodotti macchinetta, double saldo, int index, boolean admin) throws IOException {
+	static void adminCheck(LinkedList<Prodotti> elencoprodotti,LinkedList<String> listaElencoNuova, Prodotti macchinetta, double saldo, int index, boolean admin, Carta bancomat, int numerocartapassato, LinkedList<Carta> elencocarte,
+			LinkedList listaElencoNuovaCarta) throws IOException {
 		Scanner input = new Scanner(System.in);
 		
 		if (admin==true) {
@@ -205,7 +209,7 @@ public class Prodotti {
 			
 			if (scelta.equals("2")) {
 				mostraFileProdotti(elencoprodotti);
-				scegliProdotto(elencoprodotti, saldo, listaElencoNuova, macchinetta);
+				scegliProdotto(elencoprodotti, saldo, listaElencoNuova, macchinetta,bancomat, numerocartapassato, elencocarte, listaElencoNuovaCarta);
 			}
 			
 			
@@ -219,7 +223,7 @@ public class Prodotti {
 	
 		{
 			mostraFileProdotti(elencoprodotti);
-			scegliProdotto(elencoprodotti, saldo, listaElencoNuova, macchinetta);
+			scegliProdotto(elencoprodotti, saldo, listaElencoNuova, macchinetta, bancomat,numerocartapassato,elencocarte,listaElencoNuovaCarta);
 		}
 		input.close();
 	}
@@ -445,6 +449,7 @@ public class Prodotti {
 		
 	}
 */
+	
 	//costruttore per la LinkedList di <Prodotti>
 	Prodotti(String ID, String nome, double prezzo, int qnt){
 		this.ID=ID;

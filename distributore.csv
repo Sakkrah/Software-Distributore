@@ -1,16 +1,19 @@
 ID;Nome;Prezzo;Quantita
-A1;Patatine;2.5;0
-A2;Patatine Croccanti;2.5;0
-A3;Brand Patatine;3.05;3
-A4;Patatine Piccanti;2.75;4
-B1;Barretta di cioccolato;2.25;0
-B2;Salatini;1.75;2
-B3;Salamini affumicati;3.5;0
-B4;Crackers;1.45;0
+A1;Patatine;2.5;4
+A2;Patatine Croccanti;2.5;1
+A3;Brand Patatine;3.05;2
+A4;Patatine Piccanti;2.75;0
+B1;Barretta di cioccolato;2.25;7
+B2;Salatini;1.75;0
+B3;Salamini affumicati;3.5;9
+B4;Crackers;1.45;3
 C1;Pizza;1.42;4
-C2;Margherita;2.3;0
-C3;Pepsi;2.5;3
-C4;Coca Cola;3.3;4
-D1;Tronki;3.2;5
-D2;Focaccia;2.3;3
-D3;Sushi;3.0;5
+C2;Margherita;2.3;12
+C3;Pepsi;2.0;3
+C4;Coca Cola;3.3;1
+D1;Tronki;3.2;3
+D2;Focaccia;2.3;7
+D3;Sushi;3.0;2
+D4;Pringles;50.0;0
+E1;Chiavetta di cioccolato;3.0;5
+E2;Te';2.0;7

@@ -1,7 +1,9 @@
 Numero;Pin;Nome;Cognome;Saldo;SaldoPunti;Admin
-1;1111;Eva;Verdi;500.0;175;true
-2;2222;Alessandro;Gialli;50.0;200;0
-3;3333;Marta;Rossi;200.0;150;0
-4;4444;Nicola;Bianchi;1151.0;157;0
-5;5555;Viola;Viole;230.0;110;0
-6;6666;Giovanni;Blu;50.0;5;0
+1;1111;Eva;Verdi;13.95;404;true
+2;2222;Alessandro;Gialli;50.0;200;false
+3;3333;Marta;Rossi;200.0;150;false
+4;4444;Nicola;Bianchi;1151.0;157;false
+7;5555;Pippo;Salerni;230.0;110;false
+6;6666;Pippo;Blu;50.0;5;false
+99;9999;aaaa;bbbb;77.0;44;false
+12;1212;rrrrrrr;kkkkk;600.0;300;true
